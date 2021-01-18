@@ -1,10 +1,16 @@
 <template>
-  <div class="backdrop" @click="modalClose">
+  <div class="backdrop" @click.self="modalClose">
     <div class="modal">
       <h1 class="title">{{ title }}</h1>
       <p class="description">
         {{ description }}
       </p>
+      <!--default slot -->
+      <slot></slot>
+      <div class="actions">
+        <!-- named slot  -->
+        <slot name="links"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -37,5 +43,16 @@ export default {
 }
 .modal h1 {
   color: rgb(5, 207, 140);
+  text-align: center;
+  text-transform: uppercase;
+}
+.modal .description {
+  text-align: left;
+}
+
+.modal .actions {
+  margin: 20px 0 0 0;
+  height: 100%;
+  width: 100%;
 }
 </style>
